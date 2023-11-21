@@ -29,9 +29,24 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-require('lazy').setup({ {
-  'christoomey/vim-tmux-navigator',
-}, { import = 'coding' }, { import = 'ui' } }, {})
+require('lazy').setup({
+  {
+    'christoomey/vim-tmux-navigator',
+    {
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      opts = {
+        ensure_installed = {
+          'eslint',
+          'eslint_d',
+          'prettier',
+          'prettierd',
+        },
+      },
+    },
+  },
+  { import = 'coding' },
+  { import = 'ui' },
+}, {})
 
 -- [[ Basic Keymaps ]]
 
@@ -158,7 +173,6 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -167,6 +181,10 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  tsserver = {},
+  jsonls = {},
+  prismals = {},
+  tailwindcss = {},
 }
 
 -- Setup neovim lua configuration
