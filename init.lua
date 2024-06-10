@@ -31,11 +31,14 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   {
+    -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-sleuth',
     'christoomey/vim-tmux-navigator',
     {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       opts = {
         ensure_installed = {
+          'stylua',
           'eslint',
           'eslint_d',
           'prettier',
